@@ -1,1 +1,1 @@
-# gateaway
+# gateway
