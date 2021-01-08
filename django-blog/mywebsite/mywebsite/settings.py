@@ -25,7 +25,7 @@ SECRET_KEY = 'zmnc&cl8p#p4c2m%fv*(4+a=gx=(r1445v@r&h@+w9i8%&=cg#'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['winterwood.pythonanywhere.com']
+ALLOWED_HOSTS = []
 
 
 
@@ -122,7 +122,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = "/home/winterwood/gateway/django-blog/mywebsite/static"
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")

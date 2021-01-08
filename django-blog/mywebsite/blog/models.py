@@ -31,3 +31,17 @@ class Post(models.Model):
     
     def get_content_under300(self):
         return self.content[:300]
+
+    # NEW CODE 2021.01.08
+    class Commnet_Data(models.Model):
+        name_co = models.CharField(max_length = 50)
+        text_co = models.CharField(max_length = 300)
+        created_co = models.DateTimeField(auto_now_add = True)
+        updated_co = models.DateTimeField(auto_now = True)
+    
+    class Users(models.Model):
+        name = models.CharField(max_length=50)
+        email = models.CharField(max_length=50)
+        password = models.CharField(max_length=300)
+        create_at = models.DateTimeField(auto_now_add=True)
+        update_at = models.DateTimeField(auto_now=True)
