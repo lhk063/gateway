@@ -25,6 +25,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("blog/", include("blog.urls")),
     path("", RedirectView.as_view(url="/blog/", permanent=True)),
+    # 2021-01-11
+    path('accounts/',include('accounts.urls')),
 ] 
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

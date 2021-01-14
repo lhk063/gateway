@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     "blog.apps.BlogConfig",
+    "accounts.apps.AccountsConfig",
     "widget_tweaks",
 ]
 
@@ -128,3 +129,7 @@ STATICFILES_DIRS = [
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+# # 2021-01-11
+# LOGIN_URL = '/account/login/'
+# LOGIN_REDIRECT_URL = '/'
