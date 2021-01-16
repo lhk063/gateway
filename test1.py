@@ -1,4 +1,8 @@
-# HongJO corporation
+#!/usr/bin/env python
+
+# encoding=utf-8
+
+
 
 import requests
 
@@ -7,40 +11,34 @@ import time
 from bs4 import BeautifulSoup
 
 import telegram
-#!/usr/bin/env python
 
-# encoding=utf-8
-
-# pip install python telegram
+a=12361
 
 bot = telegram.Bot(token='1533748242:AAGNjEo_5YIDK8rpT64GuD9wBAV8CBi18zU')
+
 
 
 if __name__ == '__main__':
 
     # 제일 최신 게시글의 번호 저장
     latest_num = 0
-    jsh = []
 
-    
+
     while True:
         req = requests.get('https://www.ddengle.com/market_personal')
         html = req.text
         soup = BeautifulSoup(html, 'html.parser')
-        posts = soup.find("tbody").find_all("tr") # 편법으로됨
+        posts = soup.find_all("tr", {"data-voted": "0"}) # 편법으로됨
+        # posts = soup.find("tbody").find("tr").attr['data_document-srl'] # 안됨
+        # posts = soup.find_all('tr', limit=1)
 
-        for i in range(len(posts)):
-            try:
-                if posts[i].attrs['class'][0] == "notice":
-                    # print(i)
-                    continue
-            except:
-                jsh.append(posts[i])
 
-        posts = jsh[0]        
+
+
+        print(posts)
         post_num = posts.find("td", {"class" : "no"}).text
-        # print(post_num)
-    
+
+
         # 제일 최신 게시글 번호와 30초 마다 크롤링한 첫번째 게시글의 번호 비교
         # 비교 후 같지 않으면 최신 게시글 업데이트 된 것으로 텔레그램 봇으로 업데이트 메시지 전송
         if latest_num != post_num :
