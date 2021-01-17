@@ -28,7 +28,7 @@ if __name__ == '__main__':
         req = requests.get('https://www.ddengle.com/market_personal')
         html = req.text
         soup = BeautifulSoup(html, 'html.parser')
-        posts = soup.find_all("tr", {"data-voted": "0"}) # 편법으로됨
+        posts = soup.find("tr", {"data-voted": "0"}) # 편법으로됨
         # posts = soup.find("tbody").find("tr").attr['data_document-srl'] # 안됨
         # posts = soup.find_all('tr', limit=1)
 
